@@ -6,13 +6,12 @@
  *   browserify ps.js > ../ps.js
  */
 
-import { ApiPromise, WsProvider } from '@polkadot/api'
-import { web3Accounts, web3Enable, web3FromAddress } from '@polkadot/extension-dapp'
-import { stringToHex, u8aToHex, hexToU8a, isHex } from '@polkadot/util'
-import { decodeAddress, encodeAddress } from '@polkadot/keyring'
+const { ApiPromise, WsProvider } = require('@polkadot/api');
+const { web3Accounts, web3Enable, web3FromAddress } = require('@polkadot/extension-dapp');
+const { stringToHex, u8aToHex, hexToU8a, isHex } = require('@polkadot/util');
+const { decodeAddress, encodeAddress } = require('@polkadot/keyring');
 
-import BigNumber from 'bignumber.js'
-
+var BigNumber = require('bignumber.js');
 BigNumber.config({ DECIMAL_PLACES: 12, ROUNDING_MODE: BigNumber.ROUND_DOWN, decimalSeparator: '.' });
 
 class CrowdLoan {

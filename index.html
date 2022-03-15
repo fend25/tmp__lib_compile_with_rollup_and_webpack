@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ps.js compiled test</title>
+</head>
+<body>
+<div>
+  <p>ps.js test</p>
+
+  <div>
+    <pre><code id="code"></code></pre>
+  </div>
+
+  <button onclick="connectToOpal()">Connect to Opal and check</button>
+</div>
+
+<script src="./dist/main.js"></script>
+<script>
+  const $code = document.getElementById('code')
+
+  async function connectToOpal() {
+    $code.style.color = ''
+    $code.innerText = "Connecting..."
+
+    try {
+      const cl = new CrowdLoan('wss://ws-opal.unique.network')
+      await cl.connectRelay()
+
+      await cl.checkExtension()
+      const addresses = await cl.getWalletAddresses()
+
+      console.log('addresses', addresses)
+
+      $code.innerText = JSON.stringify(addresses, null, 2)
+    } catch (err) {
+      $code.style.color = 'red'
+      $code.innerText = err.toString()
+    }
+  }
+</script>
+
+</body>
+</html>

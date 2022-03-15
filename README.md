@@ -9,16 +9,27 @@ yarn
 
 ### Usage
 
-##### Rollup
-```shell
-yarn run build_rollup
-```
+First, compile with webpack:
 
-Output file: `dist/bundle.js` 
-
-##### Webpack
 ```shell
 yarn run build_webpack
 ```
 
 Output file: `dist/main.js`
+
+### Test in browser
+```shell
+yarn serve
+```
+
+Open [http://localhost:3000](http://localhost:3000) and click the button.
+
+<details>
+<summary>Also theoretically possible via Rollup, but it didn't bundle all the files</summary>
+
+```shell
+yarn run build_rollup
+```
+Output file: `dist/main.js`
+
+</details>
